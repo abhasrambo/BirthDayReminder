@@ -37,10 +37,26 @@ class ViewController: UIViewController {
             birthdayLabel.text = "Birthday: \(birthdayText)"
         }
     }
+    
+    func deleteData() {
+        let storedNameToBeDeleted = UserDefaults.standard.object(forKey: "name")
+        let storedBirthDayToBeDeleted = UserDefaults.standard.object(forKey: "birthday")
+        if (storedNameToBeDeleted as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "name")
+            nameLabel.text = "Name:"
+        }
+        if (storedBirthDayToBeDeleted as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "birthday")
+            birthdayLabel.text = "Birthday:"
+        }
+    }
 
     @IBAction func saveDetails(_ sender: UIButton) {
         savedata()
     }
     
+    @IBAction func deleteDetails(_ sender: UIButton) {
+        deleteData()
+    }
 }
 
